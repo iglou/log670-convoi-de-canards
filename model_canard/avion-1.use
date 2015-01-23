@@ -1,0 +1,53 @@
+-- Exemple adapté de Warren et Kleppe
+--
+-- MGL806 Méthodes formelles et semi-formelles
+-- LOG310 Langages formels et semi-formels
+--
+-- Auteur: Sylvie Ratté
+-- Date: 11 février 2005
+--
+-- Fichier: avion-1.use
+--
+
+--
+
+model Mavion
+
+-- classes
+
+class Vol
+attributes
+  noDeVol : Integer
+operations
+  nbSiegesDisponibles(): Integer
+end
+
+class Avion
+attributes
+  nbDeSieges : Integer
+end
+
+class Personne
+attributes
+  nom : String
+end
+
+-- associations
+
+association clients between
+  Vol[0..*] role vols;
+  Personne[0..*] role passagers;
+end
+
+association attribution between
+  Avion[1] role avion;
+  Vol[0..*] role vols;
+end
+
+-- constraints
+
+constraints
+
+context Vol
+ inv capacite:
+    passagers->size() <= avion.nbDeSieges
