@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram_Layout version="4">
+  <diagramOptions>
+    <autolayout>false</autolayout>
+    <antialiasing>false</antialiasing>
+    <showassocnames>true</showassocnames>
+    <showattributes>true</showattributes>
+    <showmultiplicities>true</showmultiplicities>
+    <showoperations>true</showoperations>
+    <showrolenames>true</showrolenames>
+    <showgrid>false</showgrid>
+  </diagramOptions>
+  <node type="Class">
+    <name>TraveeAsphaltee</name>
+    <x_coord>374.0</x_coord>
+    <y_coord>293.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>Canard</name>
+    <x_coord>51.0</x_coord>
+    <y_coord>40.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>Convoi</name>
+    <x_coord>311.0</x_coord>
+    <y_coord>71.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>Obstacle</name>
+    <x_coord>219.0</x_coord>
+    <y_coord>209.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>ObstacleFixe</name>
+    <x_coord>158.0</x_coord>
+    <y_coord>286.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>TraveeEnGarnotte</name>
+    <x_coord>505.0</x_coord>
+    <y_coord>293.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>Travee</name>
+    <x_coord>445.0</x_coord>
+    <y_coord>201.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>ObstacleMobile</name>
+    <x_coord>253.0</x_coord>
+    <y_coord>287.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>Route</name>
+    <x_coord>475.0</x_coord>
+    <y_coord>70.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>CanardPlastique</name>
+    <x_coord>97.0</x_coord>
+    <y_coord>159.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>CanardObese</name>
+    <x_coord>13.0</x_coord>
+    <y_coord>159.0</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <edge type="BinaryEdge">
+    <source>Convoi</source>
+    <target>Canard</target>
+    <name>est_dirige_par</name>
+    <edgeproperty type="associationName" userDefined="true">
+      <name>est_dirige_par</name>
+      <x_coord>185.296875</x_coord>
+      <y_coord>48.8125</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="rolename" userDefined="false">
+      <name>r3</name>
+      <x_coord>136.0</x_coord>
+      <y_coord>23.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="multiplicity" userDefined="false">
+      <name>1..*</name>
+      <x_coord>109.3125</x_coord>
+      <y_coord>22.5</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="rolename" userDefined="false">
+      <name>r2</name>
+      <x_coord>288.1875</x_coord>
+      <y_coord>53.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="multiplicity" userDefined="false">
+      <name>1</name>
+      <x_coord>309.0</x_coord>
+      <y_coord>52.5</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>307.0</x_coord>
+      <y_coord>76.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>134.0</x_coord>
+      <y_coord>76.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>Route</source>
+    <target>Travee</target>
+    <name>contient</name>
+    <edgeproperty type="associationName" userDefined="false">
+      <name>contient</name>
+      <x_coord>493.0</x_coord>
+      <y_coord>149.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="rolename" userDefined="false">
+      <name>travees</name>
+      <x_coord>491.0</x_coord>
+      <y_coord>185.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="multiplicity" userDefined="false">
+      <name>1..*</name>
+      <x_coord>491.0</x_coord>
+      <y_coord>185.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="rolename" userDefined="false">
+      <name>route</name>
+      <x_coord>491.0</x_coord>
+      <y_coord>110.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="multiplicity" userDefined="false">
+      <name>1</name>
+      <x_coord>491.0</x_coord>
+      <y_coord>110.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>489.0</x_coord>
+      <y_coord>93.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>489.0</x_coord>
+      <y_coord>197.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>Convoi</source>
+    <target>Canard</target>
+    <name>est_constitue_de</name>
+    <edgeproperty type="associationName" userDefined="true">
+      <name>est_constitue_de</name>
+      <x_coord>178.375</x_coord>
+      <y_coord>115.4375</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="rolename" userDefined="true">
+      <name>canards</name>
+      <x_coord>140.734375</x_coord>
+      <y_coord>90.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="multiplicity" userDefined="true">
+      <name>1..*</name>
+      <x_coord>144.3125</x_coord>
+      <y_coord>66.5</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="rolename" userDefined="true">
+      <name>r1</name>
+      <x_coord>267.734375</x_coord>
+      <y_coord>89.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="multiplicity" userDefined="true">
+      <name>1</name>
+      <x_coord>293.3125</x_coord>
+      <y_coord>66.5</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>307.0</x_coord>
+      <y_coord>84.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>134.0</x_coord>
+      <y_coord>83.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>Convoi</source>
+    <target>Route</target>
+    <name>roule</name>
+    <edgeproperty type="associationName" userDefined="false">
+      <name>roule</name>
+      <x_coord>399.03125</x_coord>
+      <y_coord>67.5</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="rolename" userDefined="false">
+      <name>route</name>
+      <x_coord>437.0625</x_coord>
+      <y_coord>107.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="multiplicity" userDefined="false">
+      <name>1</name>
+      <x_coord>473.0</x_coord>
+      <y_coord>107.5</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="rolename" userDefined="true">
+      <name>convoi</name>
+      <x_coord>358.0</x_coord>
+      <y_coord>58.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="multiplicity" userDefined="true">
+      <name>1</name>
+      <x_coord>365.0</x_coord>
+      <y_coord>88.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>350.0</x_coord>
+      <y_coord>80.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>471.0</x_coord>
+      <y_coord>79.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>Travee</source>
+    <target>Obstacle</target>
+    <name>comporte</name>
+    <edgeproperty type="associationName" userDefined="false">
+      <name>comporte</name>
+      <x_coord>358.5</x_coord>
+      <y_coord>222.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="rolename" userDefined="false">
+      <name>obstacles</name>
+      <x_coord>270.0</x_coord>
+      <y_coord>206.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="multiplicity" userDefined="false">
+      <name>*</name>
+      <x_coord>266.0</x_coord>
+      <y_coord>206.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="rolename" userDefined="true">
+      <name>travee</name>
+      <x_coord>394.53125</x_coord>
+      <y_coord>201.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="multiplicity" userDefined="false">
+      <name>1</name>
+      <x_coord>443.0</x_coord>
+      <y_coord>206.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>441.0</x_coord>
+      <y_coord>218.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>268.0</x_coord>
+      <y_coord>218.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>Convoi</source>
+    <target>Travee</target>
+    <name>est_sur</name>
+    <edgeproperty type="associationName" userDefined="false">
+      <name>est_sur</name>
+      <x_coord>385.796875</x_coord>
+      <y_coord>131.609375</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="rolename" userDefined="true">
+      <name>travee</name>
+      <x_coord>393.53125</x_coord>
+      <y_coord>173.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="multiplicity" userDefined="false">
+      <name>1</name>
+      <x_coord>466.0</x_coord>
+      <y_coord>166.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="rolename" userDefined="true">
+      <name>convoi</name>
+      <x_coord>307.0</x_coord>
+      <y_coord>107.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="multiplicity" userDefined="false">
+      <name>1</name>
+      <x_coord>331.109375</x_coord>
+      <y_coord>122.5</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>344.0</x_coord>
+      <y_coord>94.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>464.0</x_coord>
+      <y_coord>197.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>ObstacleFixe</source>
+    <target>Obstacle</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>199.0</x_coord>
+      <y_coord>282.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>232.0</x_coord>
+      <y_coord>232.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>CanardObese</source>
+    <target>Canard</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>54.0</x_coord>
+      <y_coord>155.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>69.0</x_coord>
+      <y_coord>123.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>ObstacleMobile</source>
+    <target>Obstacle</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>282.0</x_coord>
+      <y_coord>283.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>249.0</x_coord>
+      <y_coord>232.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>TraveeEnGarnotte</source>
+    <target>Travee</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>540.0</x_coord>
+      <y_coord>289.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>504.0</x_coord>
+      <y_coord>239.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>CanardPlastique</source>
+    <target>Canard</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>129.0</x_coord>
+      <y_coord>155.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>113.0</x_coord>
+      <y_coord>123.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>TraveeAsphaltee</source>
+    <target>Travee</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>428.0</x_coord>
+      <y_coord>289.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>470.0</x_coord>
+      <y_coord>239.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+</diagram_Layout>

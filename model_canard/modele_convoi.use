@@ -1,0 +1,81 @@
+model Convoi
+
+class Canard
+attributes
+	id : Integer
+	x : Integer
+	y : Integer
+	vitesse : Integer
+end
+
+-- Ne peut aller que sur une travée asphaltée
+class CanardObese < Canard
+end
+
+-- Ne peut aller que sur des routes mouillées
+class CanardPlastique < Canard
+end
+
+class Obstacle
+attributes
+	x : Integer
+	y : Integer
+end
+
+class ObstacleFixe < Obstacle
+end
+
+class ObstacleMobile < Obstacle
+attributes
+	vitesse : Integer
+end
+
+class Travee
+attributes
+	est_mouillee : Boolean
+end
+
+class TraveeAsphaltee < Travee
+end
+
+class TraveeEnGarnotte < Travee
+end
+
+class Route
+end
+
+class Convoi
+end
+
+association est_constitue_de between
+  Convoi[1] role r1 -- Comment faire pour ne pas que Canard ait une relation vers Convoi?
+  Canard[1..*] role canards
+end
+
+association est_dirige_par between
+  Convoi[1] role r2
+  Canard[1..*] role r3
+end
+
+association roule between
+	Convoi[1]
+	Route[1] role route
+end
+
+association contient between
+	Route[1]
+	Travee[1..*] role travees
+end
+
+association comporte between
+	Travee[1]
+	Obstacle[0..*] role obstacles
+end
+
+association est_sur between
+	Convoi[1]
+	Travee[1] role travee
+end
+--
+-- Contraintes
+
