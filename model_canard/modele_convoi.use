@@ -3,9 +3,9 @@ model Convoi
 class Canard
 attributes
 	id : Integer
-	x : Integer
-	y : Integer
 	vitesse : Integer
+operations
+	changementVitesse(v : Integer)
 end
 
 -- Ne peut aller que sur une travée asphaltée
@@ -18,8 +18,7 @@ end
 
 class Obstacle
 attributes
-	x : Integer
-	y : Integer
+	positionX : Integer
 end
 
 class ObstacleFixe < Obstacle
@@ -28,6 +27,8 @@ end
 class ObstacleMobile < Obstacle
 attributes
 	vitesse : Integer
+operations
+	changementVitesse(v : Integer)
 end
 
 class Travee
@@ -42,9 +43,18 @@ class TraveeEnGarnotte < Travee
 end
 
 class Route
+operations
+	tick()
+	changementTravee(c : Convoi, gauche : Boolean)
 end
 
 class Convoi
+attributes
+	positionX : Integer
+	espacement : Integer
+	vitesse : Integer
+operations
+  avance()
 end
 
 association est_constitue_de between
@@ -55,11 +65,6 @@ end
 association est_dirige_par between
   Convoi[1] role r2
   Canard[1..*] role r3
-end
-
-association roule between
-	Convoi[1]
-	Route[1] role route
 end
 
 association contient between
@@ -79,3 +84,10 @@ end
 --
 -- Contraintes
 
+constraints
+
+context Canard inv:
+self.vitesse<=50
+
+context ObstacleMobile inv:
+self.vitesse<=50
