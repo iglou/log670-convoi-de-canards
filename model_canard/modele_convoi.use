@@ -58,13 +58,13 @@ operations
 end
 
 association est_constitue_de between
-  Convoi[1] role r1 -- Comment faire pour ne pas que Canard ait une relation vers Convoi?
+  Convoi[1] role contient -- Comment faire pour ne pas que Canard ait une relation vers Convoi?
   Canard[1..*] role canards
 end
 
 association est_dirige_par between
-  Convoi[1] role r2
-  Canard[1..*] role r3
+  Convoi[1] role dirige_par
+  Canard[1..*] role maman
 end
 
 association contient between
@@ -91,3 +91,55 @@ self.vitesse<=50
 
 context ObstacleMobile inv:
 self.vitesse<=50
+
+
+--Pour avancer, tous les canards du convoi doivent pouvoir avancer sur la travée.
+context Travee inv:
+--if self.convoi.maman->isObese
+--then
+--	self.convoi->avance implies self->isAsphaltee
+--else
+--	if self.convoi.maman->isPlastique
+--	then
+--		self.convoi->avance implies self->est_mouillee
+--	else
+--		self.convoi->avance
+--	endif
+--endif
+
+--self.convoi.canards->forall(c : Canard | 
+--	if c->isObese
+--	then
+--		self.convoi->avance implies self->isAsphaltee
+--	else
+--		if c->isPlastique
+--		then
+--			self.convoi->avance implies self->est_mouillee
+--		endif
+--	endif
+--)
+
+--Lors d’un changement de travée, tous les canards du convoi doivent être autorisé à marcher sur la nouvelle travée.
+--context Route inv:
+--if self.travees.convoi.maman->isObese
+--then
+--	self->changementTravee implies self.travee->isAsphaltee
+--else
+--	if self.travees.convoi.maman->isPlastique
+--	then
+--		self->changementTravee implies self.travee->est_mouillee
+--	else
+--		self->changementTravee
+--	endif
+--endif
+
+--self.travees.convoi.canards->forall(c : Canard | 
+--	if c->isObese
+--	then
+--		self->changementTravee implies self.travees->isAsphaltee
+--	else
+--		if c->isPlastique
+--		then
+--			self->changementTravee implies self.travees->est_mouillee
+--		endif
+--	endif)
