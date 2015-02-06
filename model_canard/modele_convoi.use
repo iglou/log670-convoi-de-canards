@@ -3,9 +3,6 @@ model Convoi
 class Canard
 attributes
 	id : Integer
-	vitesse : Integer
-operations
-	changementVitesse(v : Integer)
 end
 
 -- Ne peut aller que sur une travée asphaltée
@@ -57,14 +54,14 @@ operations
   avance()
 end
 
-association est_constitue_de between
+composition est_constitue_de between
   Convoi[1] role contient -- Comment faire pour ne pas que Canard ait une relation vers Convoi?
-  Canard[1..*] role canards
+  Canard[1..*] role canards ordered
 end
 
-association est_dirige_par between
+aggregation est_dirige_par between
   Convoi[1] role dirige_par
-  Canard[1..*] role maman
+  Canard[1] role maman
 end
 
 association contient between
@@ -77,24 +74,28 @@ association comporte between
 	Obstacle[0..*] role obstacles
 end
 
-association est_sur between
-	Convoi[1]
-	Travee[1] role travee
+association contient2 between
+	Travee[1]
+	Convoi[1] role convoi
 end
 --
 -- Contraintes
 
 constraints
 
-context Canard inv:
-self.vitesse<=50
+context Convoi inv:
+	self.vitesse<=50
 
 context ObstacleMobile inv:
-self.vitesse<=50
+	self.vitesse<=50
 
+context TraveeEnGarnotte inv:
+	not self.convoi.maman.oclIsKindOf(CanardObese)
+	and
+	self.convoi.canards->forAll(c | not c.oclIsKindOf(CanardObese))
 
 --Pour avancer, tous les canards du convoi doivent pouvoir avancer sur la travée.
-context Travee inv:
+--context Travee inv:
 --if self.convoi.maman->isObese
 --then
 --	self.convoi->avance implies self->isAsphaltee

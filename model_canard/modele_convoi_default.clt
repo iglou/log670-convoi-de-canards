@@ -12,20 +12,20 @@
   </diagramOptions>
   <node type="Class">
     <name>TraveeAsphaltee</name>
-    <x_coord>468.0</x_coord>
-    <y_coord>236.0</y_coord>
+    <x_coord>460.0</x_coord>
+    <y_coord>221.0</y_coord>
     <hidden>false</hidden>
   </node>
   <node type="Class">
     <name>Canard</name>
-    <x_coord>16.0</x_coord>
-    <y_coord>43.0</y_coord>
+    <x_coord>69.0</x_coord>
+    <y_coord>77.0</y_coord>
     <hidden>false</hidden>
   </node>
   <node type="Class">
     <name>Convoi</name>
-    <x_coord>365.0</x_coord>
-    <y_coord>7.0</y_coord>
+    <x_coord>284.0</x_coord>
+    <y_coord>42.0</y_coord>
     <hidden>false</hidden>
   </node>
   <node type="Class">
@@ -42,8 +42,8 @@
   </node>
   <node type="Class">
     <name>TraveeEnGarnotte</name>
-    <x_coord>574.0</x_coord>
-    <y_coord>230.0</y_coord>
+    <x_coord>565.0</x_coord>
+    <y_coord>218.0</y_coord>
     <hidden>false</hidden>
   </node>
   <node type="Class">
@@ -60,8 +60,8 @@
   </node>
   <node type="Class">
     <name>Route</name>
-    <x_coord>484.0</x_coord>
-    <y_coord>15.0</y_coord>
+    <x_coord>716.0</x_coord>
+    <y_coord>63.0</y_coord>
     <hidden>false</hidden>
   </node>
   <node type="Class">
@@ -80,53 +80,51 @@
     <source>Convoi</source>
     <target>Canard</target>
     <name>est_dirige_par</name>
-    <edgeproperty type="associationName" userDefined="true">
+    <edgeproperty type="associationName" userDefined="false">
       <name>est_dirige_par</name>
-      <x_coord>218.796875</x_coord>
-      <y_coord>24.3125</y_coord>
+      <x_coord>214.0</x_coord>
+      <y_coord>95.5</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
-    <edgeproperty kind="target" type="rolename" userDefined="true">
+    <edgeproperty kind="target" type="rolename" userDefined="false">
       <name>maman</name>
-      <x_coord>111.0</x_coord>
-      <y_coord>97.0</y_coord>
+      <x_coord>142.0</x_coord>
+      <y_coord>84.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="target" type="multiplicity" userDefined="false">
-      <name>1..*</name>
-      <x_coord>74.3125</x_coord>
-      <y_coord>42.0</y_coord>
+      <name>1</name>
+      <x_coord>138.0</x_coord>
+      <y_coord>84.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
-    <edgeproperty kind="source" type="rolename" userDefined="true">
+    <edgeproperty kind="source" type="rolename" userDefined="false">
       <name>dirige_par</name>
-      <x_coord>299.1875</x_coord>
-      <y_coord>68.0</y_coord>
+      <x_coord>278.0</x_coord>
+      <y_coord>104.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="source" type="multiplicity" userDefined="false">
       <name>1</name>
-      <x_coord>363.0</x_coord>
-      <y_coord>101.5</y_coord>
+      <x_coord>282.0</x_coord>
+      <y_coord>104.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>361.0</x_coord>
-      <y_coord>43.0</y_coord>
+      <x_coord>280.0</x_coord>
+      <y_coord>87.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
       <specialid>1</specialid>
     </edgeproperty>
-    <edgeproperty type="WayPoint" userDefined="true">
+    <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>99.0</x_coord>
-      <y_coord>88.0</y_coord>
+      <x_coord>140.0</x_coord>
+      <y_coord>96.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
-      <deltaX>83.0</deltaX>
-      <deltaY>45.0</deltaY>
     </edgeproperty>
     <hidden>false</hidden>
   </edge>
@@ -134,48 +132,48 @@
     <source>Route</source>
     <target>Travee</target>
     <name>contient</name>
-    <edgeproperty type="associationName" userDefined="true">
+    <edgeproperty type="associationName" userDefined="false">
       <name>contient</name>
-      <x_coord>550.234375</x_coord>
-      <y_coord>86.5</y_coord>
+      <x_coord>679.5</x_coord>
+      <y_coord>129.5</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="target" type="rolename" userDefined="true">
       <name>travees</name>
-      <x_coord>552.0</x_coord>
-      <y_coord>120.0</y_coord>
+      <x_coord>632.0</x_coord>
+      <y_coord>84.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="target" type="multiplicity" userDefined="false">
       <name>1..*</name>
-      <x_coord>527.3125</x_coord>
-      <y_coord>102.0</y_coord>
+      <x_coord>616.0</x_coord>
+      <y_coord>126.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="source" type="rolename" userDefined="true">
       <name>route</name>
-      <x_coord>557.0</x_coord>
-      <y_coord>51.0</y_coord>
+      <x_coord>702.0</x_coord>
+      <y_coord>96.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="source" type="multiplicity" userDefined="false">
       <name>1</name>
-      <x_coord>590.0</x_coord>
-      <y_coord>111.5</y_coord>
+      <x_coord>735.0</x_coord>
+      <y_coord>130.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>588.0</x_coord>
-      <y_coord>68.0</y_coord>
+      <x_coord>733.0</x_coord>
+      <y_coord>113.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
       <specialid>1</specialid>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>552.0</x_coord>
-      <y_coord>133.0</y_coord>
+      <x_coord>618.0</x_coord>
+      <y_coord>138.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -188,51 +186,51 @@
     <name>est_constitue_de</name>
     <edgeproperty type="associationName" userDefined="true">
       <name>est_constitue_de</name>
-      <x_coord>215.875</x_coord>
-      <y_coord>88.4375</y_coord>
+      <x_coord>171.875</x_coord>
+      <y_coord>109.4375</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="target" type="rolename" userDefined="true">
-      <name>canards</name>
-      <x_coord>71.734375</x_coord>
-      <y_coord>29.0</y_coord>
+      <name>canards {ordered}</name>
+      <x_coord>168.734375</x_coord>
+      <y_coord>41.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="target" type="multiplicity" userDefined="true">
       <name>1..*</name>
-      <x_coord>109.3125</x_coord>
-      <y_coord>44.5</y_coord>
+      <x_coord>150.3125</x_coord>
+      <y_coord>68.5</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="source" type="rolename" userDefined="true">
       <name>contient</name>
-      <x_coord>304.734375</x_coord>
-      <y_coord>13.0</y_coord>
+      <x_coord>255.734375</x_coord>
+      <y_coord>58.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="source" type="multiplicity" userDefined="true">
       <name>1</name>
-      <x_coord>347.3125</x_coord>
-      <y_coord>40.5</y_coord>
+      <x_coord>266.3125</x_coord>
+      <y_coord>58.5</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>361.0</x_coord>
-      <y_coord>58.0</y_coord>
+      <x_coord>280.0</x_coord>
+      <y_coord>76.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
       <specialid>1</specialid>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="true">
       <name>1</name>
-      <x_coord>99.0</x_coord>
-      <y_coord>61.0</y_coord>
+      <x_coord>140.0</x_coord>
+      <y_coord>85.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
-      <deltaX>83.0</deltaX>
-      <deltaY>18.0</deltaY>
+      <deltaX>71.0</deltaX>
+      <deltaY>8.0</deltaY>
     </edgeproperty>
     <hidden>false</hidden>
   </edge>
@@ -240,48 +238,48 @@
     <source>Travee</source>
     <target>Obstacle</target>
     <name>comporte</name>
-    <edgeproperty type="associationName" userDefined="true">
+    <edgeproperty type="associationName" userDefined="false">
       <name>comporte</name>
-      <x_coord>424.5</x_coord>
-      <y_coord>183.0</y_coord>
+      <x_coord>445.5</x_coord>
+      <y_coord>190.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="target" type="rolename" userDefined="true">
       <name>obstacles</name>
-      <x_coord>361.0</x_coord>
-      <y_coord>182.0</y_coord>
+      <x_coord>376.0</x_coord>
+      <y_coord>168.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="target" type="multiplicity" userDefined="false">
       <name>*</name>
-      <x_coord>375.0</x_coord>
-      <y_coord>191.0</y_coord>
+      <x_coord>397.0</x_coord>
+      <y_coord>187.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="source" type="rolename" userDefined="true">
       <name>travee</name>
-      <x_coord>445.53125</x_coord>
-      <y_coord>165.0</y_coord>
+      <x_coord>437.53125</x_coord>
+      <y_coord>156.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="source" type="multiplicity" userDefined="false">
       <name>1</name>
-      <x_coord>484.0</x_coord>
-      <y_coord>188.0</y_coord>
+      <x_coord>486.0</x_coord>
+      <y_coord>190.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>482.0</x_coord>
-      <y_coord>171.0</y_coord>
+      <x_coord>484.0</x_coord>
+      <y_coord>173.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
       <specialid>1</specialid>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>377.0</x_coord>
-      <y_coord>203.0</y_coord>
+      <x_coord>399.0</x_coord>
+      <y_coord>199.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -289,51 +287,51 @@
     <hidden>false</hidden>
   </edge>
   <edge type="BinaryEdge">
-    <source>Convoi</source>
-    <target>Travee</target>
-    <name>est_sur</name>
-    <edgeproperty type="associationName" userDefined="true">
-      <name>est_sur</name>
-      <x_coord>464.796875</x_coord>
-      <y_coord>102.609375</y_coord>
+    <source>Travee</source>
+    <target>Convoi</target>
+    <name>contient2</name>
+    <edgeproperty type="associationName" userDefined="false">
+      <name>contient2</name>
+      <x_coord>425.3125</x_coord>
+      <y_coord>105.171875</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
-    <edgeproperty kind="target" type="rolename" userDefined="true">
-      <name>travee</name>
-      <x_coord>484.53125</x_coord>
-      <y_coord>123.0</y_coord>
+    <edgeproperty kind="target" type="rolename" userDefined="false">
+      <name>convoi</name>
+      <x_coord>412.0</x_coord>
+      <y_coord>158.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="target" type="multiplicity" userDefined="false">
       <name>1</name>
-      <x_coord>518.0</x_coord>
-      <y_coord>102.0</y_coord>
+      <x_coord>395.90625</x_coord>
+      <y_coord>158.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
-    <edgeproperty kind="source" type="rolename" userDefined="true">
-      <name>convoi</name>
-      <x_coord>477.0</x_coord>
-      <y_coord>85.0</y_coord>
+    <edgeproperty kind="source" type="rolename" userDefined="false">
+      <name>travee</name>
+      <x_coord>496.0</x_coord>
+      <y_coord>103.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
-    <edgeproperty kind="source" type="multiplicity" userDefined="true">
+    <edgeproperty kind="source" type="multiplicity" userDefined="false">
       <name>1</name>
-      <x_coord>468.109375</x_coord>
-      <y_coord>148.5</y_coord>
+      <x_coord>496.0</x_coord>
+      <y_coord>103.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>466.0</x_coord>
-      <y_coord>90.0</y_coord>
+      <x_coord>494.0</x_coord>
+      <y_coord>133.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
       <specialid>1</specialid>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>516.0</x_coord>
-      <y_coord>133.0</y_coord>
+      <x_coord>410.0</x_coord>
+      <y_coord>102.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -346,7 +344,7 @@
     <name>Inheritance</name>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>287.0</x_coord>
+      <x_coord>293.0</x_coord>
       <y_coord>294.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
@@ -354,8 +352,8 @@
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>317.0</x_coord>
-      <y_coord>239.0</y_coord>
+      <x_coord>327.0</x_coord>
+      <y_coord>237.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -368,7 +366,7 @@
     <name>Inheritance</name>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>54.0</x_coord>
+      <x_coord>60.0</x_coord>
       <y_coord>155.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
@@ -376,8 +374,8 @@
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>75.0</x_coord>
-      <y_coord>111.0</y_coord>
+      <x_coord>89.0</x_coord>
+      <y_coord>113.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -390,7 +388,7 @@
     <name>Inheritance</name>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>392.0</x_coord>
+      <x_coord>405.0</x_coord>
       <y_coord>285.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
@@ -398,8 +396,8 @@
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>348.0</x_coord>
-      <y_coord>239.0</y_coord>
+      <x_coord>359.0</x_coord>
+      <y_coord>237.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -413,15 +411,15 @@
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
       <x_coord>606.0</x_coord>
-      <y_coord>226.0</y_coord>
+      <y_coord>214.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
       <specialid>1</specialid>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>559.0</x_coord>
-      <y_coord>175.0</y_coord>
+      <x_coord>568.0</x_coord>
+      <y_coord>173.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -434,7 +432,7 @@
     <name>Inheritance</name>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>130.0</x_coord>
+      <x_coord>138.0</x_coord>
       <y_coord>155.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
@@ -442,8 +440,8 @@
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>109.0</x_coord>
-      <y_coord>111.0</y_coord>
+      <x_coord>113.0</x_coord>
+      <y_coord>113.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -456,16 +454,16 @@
     <name>Inheritance</name>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>514.0</x_coord>
-      <y_coord>232.0</y_coord>
+      <x_coord>515.0</x_coord>
+      <y_coord>217.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
       <specialid>1</specialid>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>533.0</x_coord>
-      <y_coord>175.0</y_coord>
+      <x_coord>539.0</x_coord>
+      <y_coord>173.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
