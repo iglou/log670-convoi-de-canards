@@ -1,5 +1,7 @@
 model Convoi
 
+enum Direction { Gauche, Droite }
+
 class Canard
 attributes
 	id : Integer
@@ -42,7 +44,16 @@ end
 class Route
 operations
 	tick()
-	changementTravee(c : Convoi, gauche : Boolean)
+	changementTravee(c : Convoi, t : Travee, d : Direction)
+		pre tIsPresent: self.travees->includes(t)
+		pre cIsPresent: t.convoi = c
+		pre mouvementGauchePossible: d = Direction::Gauche implies self.travees->indexOf(t) > 0
+		pre mouvementDroitePossible: d = Direction::Droite implies self.travees->indexOf(t) < self.travees->size() - 1
+		pre aucuneCollision:
+			let n = self.travees->indexOf(t) in
+			let m = if d = Direction::Gauche then n - 1 else n + 1 endif in
+			let t2 = self.travees->at(m) in
+			true -- vérifier les colisions dans la travee #2
 end
 
 class Convoi
@@ -66,7 +77,7 @@ end
 
 association contient between
 	Route[1]
-	Travee[1..*] role travees
+	Travee[1..*] role travees ordered
 end
 
 association comporte between
@@ -93,6 +104,9 @@ context TraveeEnGarnotte inv:
 	not self.convoi.maman.oclIsKindOf(CanardObese)
 	and
 	self.convoi.canards->forAll(c | not c.oclIsKindOf(CanardObese))
+
+--context Route::changementTravee(c : ) 
+--	pre aucuneColision:    n.size() = 12
 
 --Pour avancer, tous les canards du convoi doivent pouvoir avancer sur la travée.
 --context Travee inv:
