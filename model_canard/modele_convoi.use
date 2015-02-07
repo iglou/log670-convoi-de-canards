@@ -1,5 +1,7 @@
 model Convoi
 
+enum Direction { Gauche, Droite }
+
 class Canard
 attributes
 	id : Integer
@@ -42,7 +44,24 @@ end
 class Route
 operations
 	tick()
-	changementTravee(c : Convoi, gauche : Boolean)
+	changementTravee(c : Convoi, t : Travee, d : Direction)
+		pre tIsPresent: self.travees->includes(t)
+		pre cIsPresent: t.convoi = c
+		pre mouvementGauchePossible: d = Direction::Gauche implies self.travees->indexOf(t) > 0
+		pre mouvementDroitePossible: d = Direction::Droite implies self.travees->indexOf(t) < self.travees->size() - 1
+		pre aucuneCollision:
+			let n = self.travees->indexOf(t) in
+			let m = if d = Direction::Gauche then n - 1 else n + 1 endif in
+			let t2 = self.travees->at(m) in
+			true -- vérifier les colisions dans la travee #2
+		pre autorisationMamanObese: 
+			(c.maman.oclIsKindOf(CanardObese) implies t.oclIsKindOf(TraveeAsphaltee))
+		pre autorisationMamanPlastique: 
+			(c.maman.oclIsKindOf(CanardPlastique) implies t.est_mouillee = true)
+		--pre autorisationCannetonObese: 
+		--	(c.canards->forall(c.canards.oclIsKindOf(CanardObese) implies t.oclIsKindOf(TraveeAsphaltee)))
+		--pre autorisationCannetonPlastique: 
+		--	(c.canards->forall(c.canards.oclIsKindOf(CanardPlastique) implies t.est_mouillee = true))
 end
 
 class Convoi
@@ -66,7 +85,7 @@ end
 
 association contient between
 	Route[1]
-	Travee[1..*] role travees
+	Travee[1..*] role travees ordered
 end
 
 association comporte between
@@ -93,54 +112,3 @@ context TraveeEnGarnotte inv:
 	not self.convoi.maman.oclIsKindOf(CanardObese)
 	and
 	self.convoi.canards->forAll(c | not c.oclIsKindOf(CanardObese))
-
---Pour avancer, tous les canards du convoi doivent pouvoir avancer sur la travée.
---context Travee inv:
---if self.convoi.maman->isObese
---then
---	self.convoi->avance implies self->isAsphaltee
---else
---	if self.convoi.maman->isPlastique
---	then
---		self.convoi->avance implies self->est_mouillee
---	else
---		self.convoi->avance
---	endif
---endif
-
---self.convoi.canards->forall(c : Canard | 
---	if c->isObese
---	then
---		self.convoi->avance implies self->isAsphaltee
---	else
---		if c->isPlastique
---		then
---			self.convoi->avance implies self->est_mouillee
---		endif
---	endif
---)
-
---Lors d’un changement de travée, tous les canards du convoi doivent être autorisé à marcher sur la nouvelle travée.
---context Route inv:
---if self.travees.convoi.maman->isObese
---then
---	self->changementTravee implies self.travee->isAsphaltee
---else
---	if self.travees.convoi.maman->isPlastique
---	then
---		self->changementTravee implies self.travee->est_mouillee
---	else
---		self->changementTravee
---	endif
---endif
-
---self.travees.convoi.canards->forall(c : Canard | 
---	if c->isObese
---	then
---		self->changementTravee implies self.travees->isAsphaltee
---	else
---		if c->isPlastique
---		then
---			self->changementTravee implies self.travees->est_mouillee
---		endif
---	endif)
