@@ -105,6 +105,9 @@ constraints
 context Convoi inv:
 	self.vitesse<=50
 
+context Convoi inv:
+	self.canards->size <10
+	
 context ObstacleMobile inv:
 	self.vitesse<=50
 
@@ -113,7 +116,11 @@ context TraveeEnGarnotte inv:
 	and
 	self.convoi.canards->forAll(c | not c.oclIsKindOf(CanardObese))
 
-
+context Travee inv:
+	self.est_mouillee
+	and
+	self.convoi.canards->forAll(c | c.oclIsKindOf(CanardPlastique))
+	
 --context Route::changementTravee(c : ) 
 --	pre aucuneColision:    n.size() = 12
 
