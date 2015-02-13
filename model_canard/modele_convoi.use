@@ -55,11 +55,11 @@ operations
 			let t2 = self.travees->at(m) in
 			t2.obstacles->forAll(o | o.positionX <> c.positionX) -- vérifier les colisions dans la travee #2
 		pre autorisationMamanObese: 
-			(c.maman.oclIsKindOf(CanardObese) implies t.oclIsKindOf(TraveeAsphaltee))
+			(c.maman.oclIsKindOf(CanardObese) implies not t.oclIsKindOf(TraveeEnGarnotte))
 		pre autorisationMamanPlastique: 
 			(c.maman.oclIsKindOf(CanardPlastique) implies t.est_mouillee = true)
 		pre autorisationCannetonObese: 
-			(c.canards->forAll(can | can.oclIsKindOf(CanardObese) implies t.oclIsKindOf(TraveeAsphaltee)))
+			(c.canards->forAll(can | can.oclIsKindOf(CanardObese) implies not t.oclIsKindOf(TraveeEnGarnotte)))
 		pre autorisationCannetonPlastique: 
 			(c.canards->forAll(can | can.oclIsKindOf(CanardPlastique) implies t.est_mouillee = true))
 end
