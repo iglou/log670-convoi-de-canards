@@ -53,7 +53,7 @@ operations
 			let n = self.travees->indexOf(t) in
 			let m = if d = Direction::Gauche then n - 1 else n + 1 endif in
 			let t2 = self.travees->at(m) in
-			true -- vérifier les colisions dans la travee #2
+			t2.obstacles->forAll(o | o.positionX <> c.positionX) -- vérifier les colisions dans la travee #2
 		pre autorisationMamanObese: 
 			(c.maman.oclIsKindOf(CanardObese) implies t.oclIsKindOf(TraveeAsphaltee))
 		pre autorisationMamanPlastique: 
