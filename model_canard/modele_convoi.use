@@ -58,10 +58,10 @@ operations
 			(c.maman.oclIsKindOf(CanardObese) implies t.oclIsKindOf(TraveeAsphaltee))
 		pre autorisationMamanPlastique: 
 			(c.maman.oclIsKindOf(CanardPlastique) implies t.est_mouillee = true)
-		--pre autorisationCannetonObese: 
-		--	(c.canards->forall(c.canards.oclIsKindOf(CanardObese) implies t.oclIsKindOf(TraveeAsphaltee)))
-		--pre autorisationCannetonPlastique: 
-		--	(c.canards->forall(c.canards.oclIsKindOf(CanardPlastique) implies t.est_mouillee = true))
+		pre autorisationCannetonObese: 
+			(c.canards->forAll(can | can.oclIsKindOf(CanardObese) implies t.oclIsKindOf(TraveeAsphaltee)))
+		pre autorisationCannetonPlastique: 
+			(c.canards->forAll(can | can.oclIsKindOf(CanardPlastique) implies t.est_mouillee = true))
 end
 
 class Convoi
@@ -123,54 +123,3 @@ context Travee inv:
 	
 --context Route::changementTravee(c : ) 
 --	pre aucuneColision:    n.size() = 12
-
---Pour avancer, tous les canards du convoi doivent pouvoir avancer sur la travée.
---context Travee inv:
---if self.convoi.maman->isObese
---then
---	self.convoi->avance implies self->isAsphaltee
---else
---	if self.convoi.maman->isPlastique
---	then
---		self.convoi->avance implies self->est_mouillee
---	else
---		self.convoi->avance
---	endif
---endif
-
---self.convoi.canards->forall(c : Canard | 
---	if c->isObese
---	then
---		self.convoi->avance implies self->isAsphaltee
---	else
---		if c->isPlastique
---		then
---			self.convoi->avance implies self->est_mouillee
---		endif
---	endif
---)
-
---Lors d’un changement de travée, tous les canards du convoi doivent être autorisé à marcher sur la nouvelle travée.
---context Route inv:
---if self.travees.convoi.maman->isObese
---then
---	self->changementTravee implies self.travee->isAsphaltee
---else
---	if self.travees.convoi.maman->isPlastique
---	then
---		self->changementTravee implies self.travee->est_mouillee
---	else
---		self->changementTravee
---	endif
---endif
-
---self.travees.convoi.canards->forall(c : Canard | 
---	if c->isObese
---	then
---		self->changementTravee implies self.travees->isAsphaltee
---	else
---		if c->isPlastique
---		then
---			self->changementTravee implies self.travees->est_mouillee
---		endif
---	endif)
