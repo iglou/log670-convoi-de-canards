@@ -118,5 +118,4 @@ context TraveeEnGarnotte inv neContientPasObese:
     self.convoi.canards->forAll(c | not c.oclIsKindOf(CanardObese))
 
 context Travee inv mouilleeContientUniquementPlastique:
-  not self.convoi->isEmpty() implies 
-    self.est_mouillee implies self.convoi.canards->forAll(c | c.oclIsKindOf(CanardPlastique))
+  (not self.convoi->isEmpty() and self.est_mouillee) implies self.convoi.canards->forAll(c | c.oclIsKindOf(CanardPlastique))
