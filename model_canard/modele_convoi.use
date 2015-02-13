@@ -102,24 +102,19 @@ end
 
 constraints
 
-context Convoi inv:
+context Convoi inv vitesse_LE_50:
 	self.vitesse<=50
 
-context Convoi inv:
+context Convoi inv taille_LT_10:
 	self.canards->size <10
 	
-context ObstacleMobile inv:
-	self.vitesse<=50
+context ObstacleMobile inv vitesse_LE_60:
+	self.vitesse<=60
 
-context TraveeEnGarnotte inv:
+context TraveeEnGarnotte inv neContientPasObese:
 	not self.convoi.maman.oclIsKindOf(CanardObese)
 	and
 	self.convoi.canards->forAll(c | not c.oclIsKindOf(CanardObese))
 
-context Travee inv:
-	self.est_mouillee
-	and
-	self.convoi.canards->forAll(c | c.oclIsKindOf(CanardPlastique))
-	
---context Route::changementTravee(c : ) 
---	pre aucuneColision:    n.size() = 12
+context Travee inv contientUniquementPlastique:
+	self.est_mouillee implies self.convoi.canards->forAll(c | c.oclIsKindOf(CanardPlastique))
