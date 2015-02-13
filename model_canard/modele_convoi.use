@@ -71,6 +71,7 @@ attributes
 	vitesse : Integer
 operations
   avance()
+  longueur() : Integer = self.espacement * (self.canards->size() + 1)
 end
 
 composition est_constitue_de between
