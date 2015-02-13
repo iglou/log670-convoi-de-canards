@@ -112,9 +112,11 @@ context ObstacleMobile inv vitesse_LE_60:
 	self.vitesse<=60
 
 context TraveeEnGarnotte inv neContientPasObese:
-	not self.convoi.maman.oclIsKindOf(CanardObese)
-	and
-	self.convoi.canards->forAll(c | not c.oclIsKindOf(CanardObese))
+  not self.convoi->isEmpty() implies 
+    not self.convoi.maman.oclIsKindOf(CanardObese)
+    and
+    self.convoi.canards->forAll(c | not c.oclIsKindOf(CanardObese))
 
-context Travee inv contientUniquementPlastique:
-	self.est_mouillee implies self.convoi.canards->forAll(c | c.oclIsKindOf(CanardPlastique))
+context Travee inv mouilleeContientUniquementPlastique:
+  not self.convoi->isEmpty() implies 
+    self.est_mouillee implies self.convoi.canards->forAll(c | c.oclIsKindOf(CanardPlastique))
