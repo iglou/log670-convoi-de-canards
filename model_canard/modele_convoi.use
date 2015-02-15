@@ -33,6 +33,9 @@ end
 class Travee
 attributes
 	est_mouillee : Boolean
+operations
+	nb_convoi() : Integer = self.convoi->count(convoi)
+	nb_obstacle() : Integer = self.obstacles->size()
 end
 
 class TraveeAsphaltee < Travee
@@ -44,6 +47,7 @@ end
 class Route
 operations
 	tick()
+	nb_travee() : Integer = self.travees->size()
 	changementTravee(c : Convoi, t : Travee, d : Direction)
 		pre tIsPresent: self.travees->includes(t)
 		pre cIsPresent: t.convoi = c
@@ -72,6 +76,7 @@ attributes
 operations
   avance()
   longueur() : Integer = self.espacement * (self.canards->size() + 1)
+  nb_canards() : Integer = self.canards->size()
 end
 
 composition est_constitue_de between
