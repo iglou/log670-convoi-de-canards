@@ -32,6 +32,7 @@ operations
 	longueur() : Integer = self.espacement * self.nb_canards()
 	position_debut() : Integer = self.positionX
 	position_fin() : Integer = self.positionX - self.longueur()
+	changementVitesse(v : Integer)
 end
 
 -- Un obstacle se trouve sur une travée mais, contrairement à un convoi, ne

@@ -1,0 +1,29 @@
+!c1 := new Canard
+!c2 := new Canard
+!c3 := new Canard
+!c := new Convoi
+
+!c1 := new Canard
+!c2 := new Canard
+!c3 := new Canard
+!c := new Convoi
+
+!insert (c,c1) into est_dirige_par
+!insert (c,c2) into est_constitue_de
+!insert (c,c3) into est_constitue_de
+
+!c.espacement := 2
+
+!t1 := new Travee
+!t2 := new Travee
+!t3 := new Travee
+!r := new Route
+
+!insert (r,t1) into contient
+!insert (r,t2) into contient
+!insert (r,t3) into contient
+
+!insert (t2,c) into supporte
+
+!openter r tick()
+!opexit
