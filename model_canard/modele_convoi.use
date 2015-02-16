@@ -65,8 +65,7 @@ class Travee
 attributes
 	est_mouillee : Boolean
 operations
-	nb_convoi() : Integer = self.convoi->count(convoi)
-	nb_obstacle() : Integer = self.obstacles->size()
+	nb_obstacles() : Integer = self.obstacles->size()
 end
 
 -- Il existe deux spécialisations de travées : asphaltée et en garnotte.
