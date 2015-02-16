@@ -2,72 +2,26 @@ model Convoi
 
 enum Direction { Gauche, Droite }
 
+-- Un Canard est une entité faisant partie d'un convoi. Ceci est la classe de
+-- base et elle peut aller sur toute les travées. Il existe un certain nombre
+-- de spécialisations qui ont des restrictions sur les travées où ils peuvent
+-- aller.
 class Canard
 attributes
 	id : Integer
 end
 
--- Ne peut aller que sur une travée asphaltée
+-- Ne peut aller que sur une travée asphaltée.
 class CanardObese < Canard
 end
 
--- Ne peut aller que sur des routes mouillées
+-- Ne peut aller que sur une travée mouillée.
 class CanardPlastique < Canard
 end
 
-class Obstacle
-attributes
-	positionX : Integer
-end
-
-class ObstacleFixe < Obstacle
-end
-
-class ObstacleMobile < Obstacle
-attributes
-	vitesse : Integer
-operations
-	changementVitesse(v : Integer)
-end
-
-class Travee
-attributes
-	est_mouillee : Boolean
-operations
-	nb_convoi() : Integer = self.convoi->count(convoi)
-	nb_obstacle() : Integer = self.obstacles->size()
-end
-
-class TraveeAsphaltee < Travee
-end
-
-class TraveeEnGarnotte < Travee
-end
-
-class Route
-operations
-	tick()
-	nb_travee() : Integer = self.travees->size()
-	changementTravee(c : Convoi, t : Travee, d : Direction)
-		pre tIsPresent: self.travees->includes(t)
-		pre cIsPresent: t.convoi = c
-		pre mouvementGauchePossible: d = Direction::Gauche implies self.travees->indexOf(t) > 0
-		pre mouvementDroitePossible: d = Direction::Droite implies self.travees->indexOf(t) < self.travees->size() - 1
-		pre aucuneCollision:
-			let n = self.travees->indexOf(t) in
-			let m = if d = Direction::Gauche then n - 1 else n + 1 endif in
-			let t2 = self.travees->at(m) in
-			t2.obstacles->forAll(o | o.positionX <> c.positionX) -- vérifier les colisions dans la travee #2
-		pre autorisationMamanObese: 
-			(c.maman.oclIsKindOf(CanardObese) implies not t.oclIsKindOf(TraveeEnGarnotte))
-		pre autorisationMamanPlastique: 
-			(c.maman.oclIsKindOf(CanardPlastique) implies t.est_mouillee = true)
-		pre autorisationCannetonObese: 
-			(c.canards->forAll(can | can.oclIsKindOf(CanardObese) implies not t.oclIsKindOf(TraveeEnGarnotte)))
-		pre autorisationCannetonPlastique: 
-			(c.canards->forAll(can | can.oclIsKindOf(CanardPlastique) implies t.est_mouillee = true))
-end
-
+-- Un convoi est une file de un ou plusieur canards.
+-- La position en X est celle du « Leader » du convoi et l'espacement est le
+-- même entre tous les canards.
 class Convoi
 attributes
 	positionX : Integer
@@ -77,6 +31,96 @@ operations
   avance()
   longueur() : Integer = self.espacement * (self.canards->size() + 1)
   nb_canards() : Integer = self.canards->size()
+end
+
+-- Un obstacle se trouve sur une travée mais, contrairement à un convoi, ne
+-- peut pas être contrôlé.
+class Obstacle
+attributes
+	positionX : Integer
+end
+
+-- Un obstacle qui ne bouge pas.
+class ObstacleFixe < Obstacle
+end
+
+-- Un obstacle mobile a une vitesse et se déplace sur la travée de la même
+-- façon qu'un convoi. La différence est qu'un obstacle mobile ira toujours
+-- dans la même direction dans la même travée, alors qu'un convoi peut se
+-- déplacer d'une travée à l'autre.
+class ObstacleMobile < Obstacle
+attributes
+	vitesse : Integer
+operations
+	changementVitesse(v : Integer)
+end
+
+-- Une travée est l'élément sur lequel les éléments (convois et obstacles)
+-- se trouvent et se déplacent. Pour simplifier le modèle, nous assumons
+-- que toutes les travées sont parallèlent et ont une longueur infinie.
+-- Une travée peut être soit sèche, auquel cas tous les canards peuvent
+-- l'emprunter, ou bien mouillée, auquel cas seul les canards en plastiques
+-- peuvent y circuler.
+class Travee
+attributes
+	est_mouillee : Boolean
+operations
+	nb_convoi() : Integer = self.convoi->count(convoi)
+	nb_obstacle() : Integer = self.obstacles->size()
+end
+
+-- Il existe deux spécialisations de travées : asphaltée et en garnotte.
+-- Certains canards ne peuvent circuler que sur certain types de travées.
+class TraveeAsphaltee < Travee
+end
+
+class TraveeEnGarnotte < Travee
+end
+
+-- Une route est constituée d'une ou plusieurs travées. Il s'agit de
+-- l'entitée principale du modèle à partir de laquelle il est possible
+-- d'accéder et de manipuler toutes les autres. Elle possède donc deux
+-- opérations fondamentales pour la simulation : tick et changementTravee.
+class Route
+operations
+	nb_travee() : Integer = self.travees->size()
+	-- Cette fonction permet de faire évoluer la symulation dans le temps.
+	-- À chaque fois qu'elle est appelée, elle fait avancer tout les éléments
+	-- sur la route.
+	tick()
+	-- Cette fonction permet de donner l'ordre à un convoi de changer de travée.
+	-- Comme les celles-ci sont parallèlent, il n'y a toujours qu'un maximum de
+	-- deux travées directement accessibles pour un convoi : la travée de gauche
+	-- et celle de droite. Les deux premiers arguments servent à identifier le
+	-- convoi à déplacer et la travée sur laquelle il se trouve actuellement.
+	changementTravee(c : Convoi, t : Travee, d : Direction)
+		-- Le convoi à déplacer doit être sur la route.
+		pre cIsPresent: t.convoi = c
+		-- La travée source sur laquelle se trouve le convoi doit être sur la route.
+		pre tIsPresent: self.travees->includes(t)
+		-- Si le déplacement demandé est vers la gauche, il ne faut pas déjà être
+		-- sur le bord gauche de la route.
+		pre mouvementGauchePossible: d = Direction::Gauche implies self.travees->indexOf(t) > 0
+		-- Si le déplacement demandé est vers la droite, il ne faut pas déjà être
+		-- sur le bord droite de la route.
+		pre mouvementDroitePossible: d = Direction::Droite implies self.travees->indexOf(t) < self.travees->size() - 1
+		-- Le déplacement n'est pas autorisé s'il entrainerait une collision avec
+		-- un obstacle.
+		pre aucuneCollision:
+			let n = self.travees->indexOf(t) in
+			let m = if d = Direction::Gauche then n - 1 else n + 1 endif in
+			let t2 = self.travees->at(m) in
+			t2.obstacles->forAll(o | o.positionX > c.positionX and o.positionX < c.positionX + c.longueur())
+		-- Les canards obèses ne peuvent pas aller sur une travée en garnotte.
+		pre autorisationCanardObese: 
+			(c.maman.oclIsKindOf(CanardObese) implies not t.oclIsKindOf(TraveeEnGarnotte))
+			and
+			c.canards->forAll(can | can.oclIsKindOf(CanardObese) implies not t.oclIsKindOf(TraveeEnGarnotte))
+		-- Les canards en plastiques sont les seuls à pouvoir aller sur une travée mouillée.
+		pre autorisationCanardPlastique: 
+			t.est_mouillee = true implies
+				c.maman.oclIsKindOf(CanardPlastique) and
+				c.canards->forAll(can | can.oclIsKindOf(CanardPlastique))
 end
 
 composition est_constitue_de between
@@ -99,29 +143,33 @@ association comporte between
 	Obstacle[0..*] role obstacles
 end
 
-association contient2 between
+association supporte between
 	Travee[1]
 	Convoi[1] role convoi
 end
---
--- Contraintes
 
 constraints
 
+-- La vitesse maximale d'un convoi est de 50.
 context Convoi inv vitesse_LE_50:
 	self.vitesse<=50
 
+-- La taille maximale d'un convoi est de 10 (une maman + neuf cannetons).
 context Convoi inv taille_LT_10:
 	self.canards->size <10
-	
+
+-- La vitesse maximale d'un obstacle mobile est de 60.
 context ObstacleMobile inv vitesse_LE_60:
 	self.vitesse<=60
 
+-- Une travée en garnotte ne supporte pas de canards obèses.
 context TraveeEnGarnotte inv neContientPasObese:
   not self.convoi->isEmpty() implies 
     not self.convoi.maman.oclIsKindOf(CanardObese)
     and
     self.convoi.canards->forAll(c | not c.oclIsKindOf(CanardObese))
 
+-- Une travée mouillé ne supporte que des canards en plastiques.
 context Travee inv mouilleeContientUniquementPlastique:
-  (not self.convoi->isEmpty() and self.est_mouillee) implies self.convoi.canards->forAll(c | c.oclIsKindOf(CanardPlastique))
+	(not self.convoi->isEmpty() and self.est_mouillee) implies
+		self.convoi.canards->forAll(c | c.oclIsKindOf(CanardPlastique))
