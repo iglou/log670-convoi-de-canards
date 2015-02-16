@@ -29,8 +29,8 @@ attributes
 	vitesse : Integer
 operations
   avance()
-  longueur() : Integer = self.espacement * (self.canards->size() + 1)
-  nb_canards() : Integer = self.canards->size()
+  nb_canards() : Integer = self.canards->size() + 1
+  longueur() : Integer = self.espacement * self.nb_canards()
 end
 
 -- Un obstacle se trouve sur une travée mais, contrairement à un convoi, ne

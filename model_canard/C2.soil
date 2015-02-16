@@ -11,4 +11,4 @@
 
 !c.espacement :=2
 
-?c.nb_canards()
+?c.longueur()
